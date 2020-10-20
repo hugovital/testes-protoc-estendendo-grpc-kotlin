@@ -7,18 +7,48 @@ import io.grpc.kotlin.generator.GeneratorRunner;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import java.io.File;
 
 public class MyProtocPlugin {
 
     public static void main(String[] args) throws IOException, Descriptors.DescriptorValidationException {
 
-        String s = "CAWABANGA IT IS!!!!";
+        try {
+
+            String s = "CAWABANGA IT IS!!!!";
+
+            File f = new File("c:/roots/sysout.txt");
+            if (f.exists())
+                f.delete();
+
+            FileWriter writer = new FileWriter("c:/roots/sysout.txt");
+            writer.write( new Date().toString() );
+            writer.write(" - ");
+            writer.write(s);
+            writer.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        GeneratorRunnerItau generatorItau =  new GeneratorRunnerItau();
+        generatorItau.main(args);
+
+        //main_02(args);
+
+    }
+
+    public static void main_02(String[] args) throws IOException, Descriptors.DescriptorValidationException {
+
+/*        String s = "CAWABANGA IT IS!!!!";
         FileWriter writer = new FileWriter("c:/roots/sysout.txt");
         writer.write(s);
-        writer.close();
+        writer.close();*/
 
 /*        System.out.println("CAWABANGA IT IS!!!!");
         if (args == null || args.length == 0) {
